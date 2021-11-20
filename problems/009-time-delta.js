@@ -16,8 +16,18 @@
  * @param {string} y
  * @returns {number} разница между x и y в секундах
  */
+function getDate(hour, minutes, seconds) {
+    const date = new Date();
+    date.setHours(Number(hour), Number(minutes), Number(seconds));
+
+    return date;
+}
 function getTimeDelta(x, y) {
-    return undefined;
+    const [parse1, parse2] = [x.split(":"), y.split(":")];
+    const time1 = getDate(...parse1);
+    const time2 = getDate(...parse2);
+
+    return Math.floor((time2 - time1) / 1000);
 }
 
 module.exports = getTimeDelta;
