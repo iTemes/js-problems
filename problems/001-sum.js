@@ -13,7 +13,9 @@
  * @returns {number}
  */
 function sum(n) {
-    return undefined;
+    if (n <= 1) {
+        return 1;
+    } else return n + sum(n - 1);
 }
 
 module.exports = sum;
