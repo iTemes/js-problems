@@ -12,7 +12,8 @@
  * @returns {number|undefined}
  */
 function getPower(n) {
-    return -1;
+    const res = Math.log2(n);
+    return Number.isInteger(res) ? res : undefined;
 }
 
 module.exports = getPower;
