@@ -16,7 +16,20 @@
  * @returns {(number|undefined)}
  */
 function getWinner(points) {
-    return undefined;
+    let firstTeam = 0;
+    let secondTeam = 0;
+
+    for (let i = 0; i < points.length; i++) {
+        const quaterResult = points[i].split("-").map(Number);
+        firstTeam += quaterResult[0];
+        secondTeam += quaterResult[1];
+    }
+
+    return firstTeam === secondTeam
+        ? undefined
+        : firstTeam > secondTeam
+        ? 1
+        : 2;
 }
 
 module.exports = getWinner;
