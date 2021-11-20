@@ -16,7 +16,26 @@
  * @returns {string}
  */
 function decrypt(secret) {
-    return undefined;
+    const string = secret.split("");
+    let ans = "";
+    const alphabetHash = [...Array(26)].reduce((acc, _, index) => {
+        if (index === 25) {
+            acc[String.fromCharCode(index + 97)] = String.fromCharCode(0 + 97);
+        } else {
+            acc[String.fromCharCode(index + 97)] = String.fromCharCode(
+                index + 1 + 97
+            );
+        }
+        return acc;
+    }, {});
+
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === " ") {
+            ans += " ";
+        } else ans += alphabetHash[string[i]];
+    }
+
+    return ans;
 }
 
 module.exports = decrypt;
