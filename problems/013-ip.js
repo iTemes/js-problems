@@ -19,7 +19,14 @@
  * @returns {boolean}
  */
 function isIpValid(address) {
-    return undefined;
+    if (
+        /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(025[0-5]|25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+            address
+        )
+    ) {
+        return true;
+    }
+    return false;
 }
 
 module.exports = isIpValid;
