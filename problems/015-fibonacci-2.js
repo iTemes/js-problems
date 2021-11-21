@@ -13,8 +13,24 @@
  * @param {number} value
  * @returns {undefined|number}
  */
+
+function makePrefixSum(lenght) {
+    if (lenght <= 2) {
+        return [0, 1];
+    }
+
+    const newArr = [0, 1, ...Array(lenght - 1)];
+    for (let i = 2; i < newArr.length; i++) {
+        newArr[i] = newArr[i - 1] + newArr[i - 2];
+    }
+    return newArr;
+}
+
 function isFibonacci(value) {
-    return undefined;
+    const fibSeq = makePrefixSum(15);
+    const index = fibSeq.indexOf(value);
+
+    return +index < 0 ? undefined : index;
 }
 
 module.exports = isFibonacci;
