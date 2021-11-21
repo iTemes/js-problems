@@ -18,7 +18,35 @@
  * @returns {boolean}
  */
 function validatePassword(password) {
-    return undefined;
+    if (password.length < 7) return false;
+
+    const str = password.split("");
+    let isNum = false;
+    let isLower = false;
+    let isUpper = false;
+
+    const alphabetHash = [...Array(26)].reduce((acc, _, index) => {
+        acc[String.fromCharCode(index + 65)] = String.fromCharCode(index + 97);
+        return acc;
+    }, {});
+
+    for (let i = 0; i < str.length; i++) {
+        if (Number(str[i])) {
+            isNum = true;
+            continue;
+        }
+
+        if (alphabetHash[str[i]]) {
+            isUpper = true;
+            continue;
+        }
+        const upperCase = str[i].toUpperCase();
+        if (alphabetHash[upperCase] === str[i]) {
+            isLower = true;
+        }
+    }
+
+    return isNum && isUpper && isLower;
 }
 
 module.exports = validatePassword;
