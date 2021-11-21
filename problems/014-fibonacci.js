@@ -16,8 +16,13 @@
  * @param {number} n >= 0
  * @returns {number}
  */
+
 function fibonacci(n) {
-    return undefined;
+    if (n < 2) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
 }
 
 module.exports = fibonacci;
